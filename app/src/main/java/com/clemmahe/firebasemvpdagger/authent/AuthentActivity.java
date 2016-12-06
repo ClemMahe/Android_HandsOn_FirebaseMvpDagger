@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.RelativeLayout;
 
+import com.clemmahe.firebasemvpdagger.MvpApp;
 import com.clemmahe.firebasemvpdagger.R;
 
 import javax.inject.Inject;
@@ -16,8 +17,9 @@ public class AuthentActivity extends AppCompatActivity {
 
     public static final String EXTRA_TASK_ID = "TASK_ID";
 
-   // @Inject
-    //AuthentPresenter mAuthentPresenter;
+    @Inject
+    AuthentPresenter mAuthentPresenter;
+
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.content_list_peripherals)
@@ -34,21 +36,11 @@ public class AuthentActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // Create the presenter
 
         /*
         DaggerAuthentComponent.builder()
-                .authentPresenterModule(new AuthentPresenterModule(contentListPeripherals))
-                .tasksRepositoryComponent(((ToDoApplication) getApplication())
-                        .getTasksRepositoryComponent())
-                .build()
-                .inject(this);
-                */
-        /*
-        DaggerAuthentComponent.builder()
-                .authentPresenterModule(new AuthentPresenterModule(taskDetailFragment, taskId))
-                .tasksRepositoryComponent(((ToDoApplication) getApplication())
-                .getTasksRepositoryComponent())
+                .authentPresenterModule(new AuthentPresenterModule(null))
+                .tasksRepositoryComponent(((MvpApp) getApplication()).getFirebaseComponent())
                 .build()
                 .inject(this);
                 */
