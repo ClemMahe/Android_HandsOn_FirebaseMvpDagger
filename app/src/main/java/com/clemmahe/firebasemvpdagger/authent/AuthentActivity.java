@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.RelativeLayout;
 
-import com.clemmahe.firebasemvpdagger.MvpApp;
 import com.clemmahe.firebasemvpdagger.R;
 
 import javax.inject.Inject;

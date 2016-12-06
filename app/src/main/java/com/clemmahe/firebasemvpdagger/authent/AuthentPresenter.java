@@ -1,7 +1,5 @@
 package com.clemmahe.firebasemvpdagger.authent;
 
-import com.clemmahe.firebasemvpdagger.firebase.FirebaseManager;
-
 import javax.inject.Inject;
 
 /**
