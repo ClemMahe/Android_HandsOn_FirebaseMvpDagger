@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "277962788474",
+    "firebase_url": "https://fir-mvpdagger.firebaseio.com",
+    "project_id": "fir-mvpdagger",
+    "storage_bucket": "fir-mvpdagger.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:277962788474:android:c992a9ee34af7c1f",
+        "android_client_info": {
+          "package_name": "com.clemmahe.firebasemvpdagger"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "277962788474-fa44ng4e890nn8jdpj04u8dj1hqo987p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.clemmahe.firebasemvpdagger",
+            "certificate_hash": "28F8CEAC0C0DDDD82D72FB3B576F9A869B748CA3"
+          }
+        },
+        {
+          "client_id": "277962788474-4l0er8r30jbg66uh7nrpcjknmi0rb0u8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.clemmahe.firebasemvpdagger",
+            "certificate_hash": "FAEFECF42FC51FBCE9468BE21283728CF05A45DC"
+          }
+        },
+        {
+          "client_id": "277962788474-e5volthp7ofp89qi72845570qtk47anf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjvpEl8PY6_cw0yNaJuE3T6WBhQUx6O7E"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "277962788474-e5volthp7ofp89qi72845570qtk47anf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
