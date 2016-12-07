@@ -1,7 +1,7 @@
 package com.clemmahe.firebasemvpdagger.authent;
 
 import com.clemmahe.firebasemvpdagger.firebase.FirebaseComponent;
-import com.clemmahe.firebasemvpdagger.utils.ActivityScoped;
+import com.clemmahe.firebasemvpdagger.utils.FragmentScoped;
 
 import dagger.Component;
 
@@ -9,7 +9,7 @@ import dagger.Component;
  * AuthentComponent
  * Created by clem on 04/12/2016.
  */
-@ActivityScoped
+@FragmentScoped
 @Component(dependencies = FirebaseComponent.class, modules = AuthentPresenterModule.class)
 public interface AuthentComponent {
 

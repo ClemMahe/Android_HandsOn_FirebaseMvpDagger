@@ -1,5 +1,7 @@
 package com.clemmahe.firebasemvpdagger.authent;
 
+import com.clemmahe.firebasemvpdagger.firebase.FirebaseManager;
+
 import javax.inject.Inject;
 
 /**
@@ -9,22 +11,17 @@ import javax.inject.Inject;
 
 public final class AuthentPresenter implements AuthentContract.Presenter {
 
-    /*
+
     private AuthentContract.View mView;
     private FirebaseManager mManager;
+
     @Inject
     AuthentPresenter(FirebaseManager manager,
                         AuthentContract.View view) {
         mManager = manager;
         mView = view;
     }
-    */
 
-    private AuthentContract.View mView;
-    @Inject
-    AuthentPresenter(AuthentContract.View view) {
-        mView = view;
-    }
 
 
         /**
