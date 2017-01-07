@@ -2,6 +2,8 @@ package com.clemmahe.firebasemvpdagger.authent;
 
 import com.clemmahe.firebasemvpdagger.BasePresenter;
 import com.clemmahe.firebasemvpdagger.BaseView;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.common.api.GoogleApiClient;
 
 /**
  * AuthentContract
@@ -10,49 +12,27 @@ import com.clemmahe.firebasemvpdagger.BaseView;
 
 public interface AuthentContract {
 
+    /**
+     * Authent View
+     */
     interface View extends BaseView<Presenter> {
 
         void showConnectedStatus(boolean isConnected);
 
-        /*
-        void setLoadingIndicator(boolean active);
+        void viewSignIn(final GoogleApiClient apiClient);
 
-        void showMissingTask();
-
-        void hideTitle();
-
-        void showTitle(String title);
-
-        void hideDescription();
-
-        void showDescription(String description);
-
-        void showCompletionStatus(boolean complete);
-
-        void showEditTask(String taskId);
-
-        void showTaskDeleted();
-
-        void showTaskMarkedComplete();
-
-        void showTaskMarkedActive();
-
-        boolean isActive();
-        */
+        void viewSignedInFailed();
     }
 
+    /**
+     * Authent Presenter
+     */
     interface Presenter extends BasePresenter {
 
-        void login();
+        void startSignIn();
 
-        /*
-        void editTask();
+        void signInOk(GoogleSignInAccount account);
 
-        void deleteTask();
-
-        void completeTask();
-
-        void activateTask();
-        */
+        void siginInFailed();
     }
 }

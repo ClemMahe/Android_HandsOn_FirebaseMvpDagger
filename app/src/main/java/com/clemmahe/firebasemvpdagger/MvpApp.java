@@ -2,8 +2,9 @@ package com.clemmahe.firebasemvpdagger;
 
 import android.app.Application;
 
-import com.clemmahe.firebasemvpdagger.firebase.DaggerFirebaseComponent;
-import com.clemmahe.firebasemvpdagger.firebase.FirebaseComponent;
+import com.crashlytics.android.Crashlytics;
+
+import io.fabric.sdk.android.Fabric;
 
 
 /**
@@ -13,24 +14,11 @@ import com.clemmahe.firebasemvpdagger.firebase.FirebaseComponent;
 
 public class MvpApp extends Application {
 
-    private FirebaseComponent mFirebaseComponent;
 
     @Override
     public void onCreate() {
         super.onCreate();
-
-        //Firebase component
-        mFirebaseComponent = DaggerFirebaseComponent.builder()
-                .applicationModule(new ApplicationModule((getApplicationContext())))
-                .build();
-    }
-
-    /**
-     * Get Firebase component
-     * @return FirebaseComponent
-     */
-    public FirebaseComponent getFirebaseComponent() {
-        return mFirebaseComponent;
+        Fabric.with(this, new Crashlytics());
     }
 
 }

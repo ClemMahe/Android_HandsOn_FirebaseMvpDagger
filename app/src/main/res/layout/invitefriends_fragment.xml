@@ -6,12 +6,6 @@
     android:layout_height="match_parent"
     android:layout_marginTop="?attr/actionBarSize"
     tools:context="com.clemmahe.firebasemvpdagger.authent.AuthentActivity"
-    tools:showIn="@layout/activity_authent">
-
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/authent_googlesigninbutton"
-        android:layout_width="match_parent"
-        android:layout_margin="10dp"
-        android:layout_height="wrap_content"/>
+    tools:showIn="@layout/authent_activity">
 
 </RelativeLayout>

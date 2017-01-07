@@ -1,8 +1,11 @@
 package com.clemmahe.firebasemvpdagger;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
+
+import com.clemmahe.firebasemvpdagger.firebase.DaggerFirebaseComponent;
+import com.clemmahe.firebasemvpdagger.firebase.FirebaseComponent;
+import com.clemmahe.firebasemvpdagger.firebase.FirebaseModule;
 
 /**
  * BaseActivity
@@ -10,8 +13,26 @@ import android.support.v7.app.AppCompatActivity;
  */
 public abstract class BaseActivity extends AppCompatActivity{
 
+    protected FirebaseComponent mFirebaseComponent;
+
     @Override
-    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        //Firebase component
+        mFirebaseComponent = DaggerFirebaseComponent.builder()
+                .applicationModule(new ApplicationModule((getApplicationContext())))
+                .firebaseModule(new FirebaseModule())
+                .build();
     }
+
+
+    /**
+     * Get Firebase component
+     * @return FirebaseComponent
+     */
+    public FirebaseComponent getFirebaseComponent() {
+        return mFirebaseComponent;
+    }
+
 }

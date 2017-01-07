@@ -1,11 +1,11 @@
 package com.clemmahe.firebasemvpdagger.authent;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
-import com.clemmahe.firebasemvpdagger.MvpApp;
+import com.clemmahe.firebasemvpdagger.BaseActivity;
 import com.clemmahe.firebasemvpdagger.R;
+import com.clemmahe.firebasemvpdagger.firebase.FirebaseComponent;
 import com.clemmahe.firebasemvpdagger.utils.ActivityUtils;
 
 import javax.inject.Inject;
@@ -13,7 +13,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class AuthentActivity extends AppCompatActivity{
+public class AuthentActivity extends BaseActivity{
     
     @Inject
     AuthentPresenter mAuthentPresenter;
@@ -21,11 +21,14 @@ public class AuthentActivity extends AppCompatActivity{
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
+    @Inject
+    FirebaseComponent mCompo;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_authent);
+        setContentView(R.layout.authent_activity);
         ButterKnife.bind(this);
 
         // Set up the toolbar.
@@ -42,7 +45,7 @@ public class AuthentActivity extends AppCompatActivity{
 
         DaggerAuthentComponent.builder()
                 .authentPresenterModule(new AuthentPresenterModule(authentFragment))
-                .firebaseComponent(((MvpApp) getApplication()).getFirebaseComponent())
+                .firebaseComponent(((BaseActivity)this).getFirebaseComponent())
                 .build()
                 .inject(this);
     }
@@ -52,6 +55,9 @@ public class AuthentActivity extends AppCompatActivity{
         onBackPressed();
         return true;
     }
+
+
+
 
 
 }

@@ -3,7 +3,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.2'
+        classpath 'com.android.tools.build:gradle:2.2.3'
         classpath 'com.google.gms:google-services:3.0.0'
     }
 }
@@ -31,4 +31,9 @@ ext {
     daggerVersion = '2.8'
     junitVersion = '4.12'
     butterknifeVersion = '8.4.0'
+
+    //Firebase
+    firebaseClientVersion = "2.5.2"
+    firebaseApiVersion = "10.0.1"
+
 }

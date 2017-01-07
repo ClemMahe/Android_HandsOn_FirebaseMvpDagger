@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_list_peripherals"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="?attr/actionBarSize"
+    tools:context="com.clemmahe.firebasemvpdagger.authent.AuthentActivity"
+    tools:showIn="@layout/authent_activity"
+    android:padding="10dp">
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/authent_googlesigninbutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button android:id="@+id/authent_friends"
+        android:layout_marginTop="10dp"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
+        android:text="@string/authent_button_friends"
+        android:layout_width="match_parent"
+        android:enabled="false"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/authent_googlesigninbutton"/>
+
+    <Button android:id="@+id/authent_storedata"
+        android:layout_marginTop="10dp"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
+        android:text="@string/authent_button_storedata"
+        android:layout_width="match_parent"
+        android:enabled="false"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/authent_friends"/>
+
+
+</RelativeLayout>
