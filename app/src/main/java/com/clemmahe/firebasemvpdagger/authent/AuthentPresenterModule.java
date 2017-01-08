@@ -4,7 +4,7 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * AuthentPresenterModule
+ * FriendsPresenterModule
  * Created by clem on 04/12/2016.
  */
 @Module

@@ -5,17 +5,13 @@ buildscript {
     }
     dependencies {
         classpath "com.jakewharton:butterknife-gradle-plugin:$rootProject.butterknifeVersion"
-        classpath 'io.fabric.tools:gradle:1.+'
     }
 }
 
 apply plugin: 'com.android.application'
 apply plugin: 'com.jakewharton.butterknife'
-apply plugin: 'io.fabric'
 
-repositories {
-    maven { url 'https://maven.fabric.io/public' }
-}
+
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -84,23 +80,20 @@ dependencies {
     //Dagger
     compile "com.google.dagger:dagger:$rootProject.daggerVersion"
     annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
-    provided 'org.glassfish:javax.annotation:10.0-b28'
 
     //Firebase
     compile "com.firebase:firebase-client-android:$rootProject.firebaseClientVersion"
     compile "com.google.firebase:firebase-database:$rootProject.firebaseApiVersion"
     compile "com.google.firebase:firebase-auth:$rootProject.firebaseApiVersion"
     compile "com.google.android.gms:play-services-auth:$rootProject.firebaseApiVersion"
+    compile "com.google.firebase:firebase-invites:$rootProject.firebaseApiVersion"
+    //Firebase crash
+    compile "com.google.firebase:firebase-crash:$rootProject.firebaseApiVersion"
+    provided 'org.glassfish:javax.annotation:10.0-b28'
 
     //Butterknife
     compile "com.jakewharton:butterknife:$rootProject.butterknifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterknifeVersion"
-
-    //Fabric
-    compile('com.crashlytics.sdk.android:crashlytics:2.6.5@aar') {
-        transitive = true;
-    }
-
 
 
 }

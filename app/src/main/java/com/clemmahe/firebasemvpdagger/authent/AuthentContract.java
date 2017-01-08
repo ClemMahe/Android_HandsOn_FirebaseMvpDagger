@@ -6,7 +6,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 /**
- * AuthentContract
+ * FriendsContract
  * Created by clem on 04/12/2016.
  */
 

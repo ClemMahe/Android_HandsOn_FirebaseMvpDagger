@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">Firebase MVP</string>
+
     <string name="authent_button_friends">Friends</string>
     <string name="authent_button_storedata">Stored datas</string>
     <string name="authen_state_connected">Connecté</string>
+
+    <string name="invite_button">Invite friends</string>
+    <string name="invite_completed">Invitations effectuées</string>
+    <string name="invite_cancelled">Invitations annulées</string>
 </resources>

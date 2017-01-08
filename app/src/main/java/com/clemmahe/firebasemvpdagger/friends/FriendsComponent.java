@@ -1,4 +1,4 @@
-package com.clemmahe.firebasemvpdagger.authent;
+package com.clemmahe.firebasemvpdagger.friends;
 
 import com.clemmahe.firebasemvpdagger.firebase.FirebaseComponent;
 import com.clemmahe.firebasemvpdagger.utils.FragmentScoped;
@@ -10,8 +10,8 @@ import dagger.Component;
  * Created by clem on 04/12/2016.
  */
 @FragmentScoped
-@Component(dependencies = FirebaseComponent.class, modules = AuthentPresenterModule.class)
-public interface AuthentComponent {
+@Component(dependencies = FirebaseComponent.class, modules = FriendsPresenterModule.class)
+public interface FriendsComponent {
 
-    void inject(AuthentActivity taskDetailActivity);
+    void inject(FriendsActivity friendsActivity);
 }

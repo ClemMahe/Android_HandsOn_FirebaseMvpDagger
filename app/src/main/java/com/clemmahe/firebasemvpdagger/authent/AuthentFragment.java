@@ -15,6 +15,7 @@ import android.widget.Button;
 import com.clemmahe.firebasemvpdagger.BaseFragment;
 import com.clemmahe.firebasemvpdagger.R;
 import com.clemmahe.firebasemvpdagger.firebase.FirebaseManager;
+import com.clemmahe.firebasemvpdagger.friends.FriendsActivity;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
@@ -50,7 +51,7 @@ public class AuthentFragment extends BaseFragment implements AuthentContract.Vie
         return new AuthentFragment();
     }
 
-    public AuthentFragment(){
+    public AuthentFragment() {
         uiThread = new Handler(Looper.getMainLooper());
     }
 
@@ -59,11 +60,6 @@ public class AuthentFragment extends BaseFragment implements AuthentContract.Vie
         mPresenter = checkNotNull(presenter);
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        //mPresenter
-    }
 
     @Override
     public void onStart() {
@@ -88,12 +84,12 @@ public class AuthentFragment extends BaseFragment implements AuthentContract.Vie
 
     @Override
     public void showConnectedStatus(boolean isConnected) {
-        if(isConnected) {
+        if (isConnected) {
             uiThread.post(new Runnable() {
                 @Override
                 public void run() {
                     statusSnackBar = Snackbar.make(getView(),
-                            getResources().getString(R.string.authen_state_connected),
+                            R.string.authen_state_connected,
                             Snackbar.LENGTH_INDEFINITE);
                     statusSnackBar.show();
                     authentFriends.setEnabled(true);
@@ -117,11 +113,6 @@ public class AuthentFragment extends BaseFragment implements AuthentContract.Vie
     }
 
 
-    @OnClick(R.id.authent_googlesigninbutton)
-    public void onClick() {
-        mPresenter.startSignIn();
-    }
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -135,6 +126,22 @@ public class AuthentFragment extends BaseFragment implements AuthentContract.Vie
                 // Google Sign In failed, update UI appropriately
                 mPresenter.siginInFailed();
             }
+        }
+    }
+
+    @OnClick({R.id.authent_googlesigninbutton, R.id.authent_friends, R.id.authent_storedata})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.authent_googlesigninbutton:
+                mPresenter.startSignIn();
+                break;
+            case R.id.authent_friends:
+                Intent friendsIt = new Intent(getContext(),
+                        FriendsActivity.class);
+                startActivity(friendsIt);
+                break;
+            case R.id.authent_storedata:
+                break;
         }
     }
 }

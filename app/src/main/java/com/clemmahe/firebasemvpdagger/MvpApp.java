@@ -2,10 +2,6 @@ package com.clemmahe.firebasemvpdagger;
 
 import android.app.Application;
 
-import com.crashlytics.android.Crashlytics;
-
-import io.fabric.sdk.android.Fabric;
-
 
 /**
  * MvpApp
@@ -18,7 +14,6 @@ public class MvpApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        Fabric.with(this, new Crashlytics());
     }
 
 }

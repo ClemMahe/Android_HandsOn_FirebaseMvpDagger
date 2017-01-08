@@ -7,7 +7,7 @@ import java.lang.annotation.RetentionPolicy;
 import javax.inject.Scope;
 
 /**
- * Component which use singletons components must be scoped as AuthentComponent using FirebaseComponent
+ * Component which use singletons components must be scoped as FriendsComponent using FirebaseComponent
  * Created by clem on 06/12/2016.
  */
 @Documented

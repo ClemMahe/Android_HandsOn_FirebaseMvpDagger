@@ -8,7 +8,7 @@ import com.google.firebase.auth.FirebaseUser;
 import javax.inject.Inject;
 
 /**
- * AuthentPresenter
+ * FriendsPresenter
  * Created by clem on 04/12/2016.
  */
 
@@ -23,7 +23,7 @@ public final class AuthentPresenter implements AuthentContract.Presenter, IFireb
     @Inject
     AuthentPresenter(FirebaseManager manager, AuthentContract.View view) {
         this.mManager = manager;
-        this.mManager.setListener(this);
+        this.mManager.setAuthListener(this);
         this.mView = view;
     }
 
@@ -55,12 +55,12 @@ public final class AuthentPresenter implements AuthentContract.Presenter, IFireb
 
     @Override
     public void start() {
-        mManager.startManager();
+        mManager.startAuth();
     }
 
     @Override
     public void stop() {
-        mManager.stopManager();
+        mManager.stopAuth();
     }
 
 

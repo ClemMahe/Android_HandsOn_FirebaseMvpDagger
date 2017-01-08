@@ -5,6 +5,8 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.clemmahe.firebasemvpdagger.R;
+import com.clemmahe.firebasemvpdagger.friends.IFirebaseFriendsListener;
+import com.google.android.gms.appinvite.AppInvite;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -31,6 +33,8 @@ public class FirebaseManager implements GoogleApiClient.OnConnectionFailedListen
         OnCompleteListener<AuthResult>{
 
     public static final int REQUEST_CODE_SIGN_IN = 101;
+    public static final int REQUEST_CODE_INVITE = 102;
+
 
     private Context mCtx;
 
@@ -43,29 +47,24 @@ public class FirebaseManager implements GoogleApiClient.OnConnectionFailedListen
     private FirebaseUser mFirebaseUser;
     private boolean startAsLoggedIn;
 
-    private IFirebaseAuthenticationListener listener;
+    private IFirebaseAuthenticationListener authListener;
+    private IFirebaseFriendsListener friendsListener;
 
     @Inject
     FirebaseManager(Context ctx) {
         this.mCtx = ctx;
-        initApiClientSignInOptions();
+        initApiClient();
     }
 
     /**
      * Set Listener
      * @param listener IFirebaseAuthenticationListener
      */
-    public void setListener(IFirebaseAuthenticationListener listener){
-        this.listener = listener;
-    }
-
-    /**
-     * Init api client sign in options
-     */
-    private void initApiClientSignInOptions() {
+    public void setAuthListener(final IFirebaseAuthenticationListener listener){
+        this.authListener = listener;
         //Firebase
-        mAuth = FirebaseAuth.getInstance();
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
+        this.mAuth = FirebaseAuth.getInstance();
+        this.mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 mFirebaseUser = firebaseAuth.getCurrentUser();
@@ -75,6 +74,16 @@ public class FirebaseManager implements GoogleApiClient.OnConnectionFailedListen
                 }
             }
         };
+    }
+
+    public void setFriendsListener(final IFirebaseFriendsListener listener){
+        this.friendsListener = listener;
+    }
+
+    /**
+     * Init api client sign in options
+     */
+    private void initApiClient() {
         // Configure Google Sign In
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(mCtx.getString(R.string.webserver_id_oauth))
@@ -84,6 +93,7 @@ public class FirebaseManager implements GoogleApiClient.OnConnectionFailedListen
         mGoogleApiClient = new GoogleApiClient.Builder(mCtx)
                 .addOnConnectionFailedListener(this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .addApi(AppInvite.API)
                 .build();
     }
 
@@ -104,7 +114,7 @@ public class FirebaseManager implements GoogleApiClient.OnConnectionFailedListen
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         //Connection failed
-        listener.failConnected();
+        authListener.failConnected();
     }
 
 
@@ -112,21 +122,21 @@ public class FirebaseManager implements GoogleApiClient.OnConnectionFailedListen
      * Get API Client
      * @return GoogleApiClient
      */
-    public GoogleApiClient getApiClient(){
+    public GoogleApiClient getApiClient() {
         return mGoogleApiClient;
     }
 
     /**
      * Start manager
      */
-    public void startManager() {
+    public void startAuth() {
         mAuth.addAuthStateListener(mAuthListener);
     }
 
     /**
      * Stop manager
      */
-    public void stopManager() {
+    public void stopAuth() {
         if (mAuthListener != null) {
             mAuth.removeAuthStateListener(mAuthListener);
         }
@@ -136,9 +146,10 @@ public class FirebaseManager implements GoogleApiClient.OnConnectionFailedListen
     public void onComplete(@NonNull Task<AuthResult> task) {
         if(!task.isSuccessful()){
             //Connect not successful
-            if(listener!=null) listener.failConnected();
+            if(authListener !=null) authListener.failConnected();
         }
     }
+
 
 
 }
