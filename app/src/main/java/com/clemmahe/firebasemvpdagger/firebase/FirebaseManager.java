@@ -117,6 +117,13 @@ public class FirebaseManager implements GoogleApiClient.OnConnectionFailedListen
         authListener.failConnected();
     }
 
+    /**
+     * getCurrentUser
+     * @return FirebaseUser
+     */
+    public FirebaseUser getCurrentUser(){
+        return mFirebaseUser;
+    }
 
     /**
      * Get API Client

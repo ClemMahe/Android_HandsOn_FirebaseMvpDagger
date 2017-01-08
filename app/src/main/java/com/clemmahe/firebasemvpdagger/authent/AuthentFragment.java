@@ -16,6 +16,7 @@ import com.clemmahe.firebasemvpdagger.BaseFragment;
 import com.clemmahe.firebasemvpdagger.R;
 import com.clemmahe.firebasemvpdagger.firebase.FirebaseManager;
 import com.clemmahe.firebasemvpdagger.friends.FriendsActivity;
+import com.clemmahe.firebasemvpdagger.storeddatas.StoredDataActivity;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
@@ -88,6 +89,7 @@ public class AuthentFragment extends BaseFragment implements AuthentContract.Vie
             uiThread.post(new Runnable() {
                 @Override
                 public void run() {
+                    authentGooglesigninbutton.setEnabled(false);
                     statusSnackBar = Snackbar.make(getView(),
                             R.string.authen_state_connected,
                             Snackbar.LENGTH_INDEFINITE);
@@ -141,6 +143,9 @@ public class AuthentFragment extends BaseFragment implements AuthentContract.Vie
                 startActivity(friendsIt);
                 break;
             case R.id.authent_storedata:
+                Intent storedDataIt = new Intent(getContext(),
+                        StoredDataActivity.class);
+                startActivity(storedDataIt);
                 break;
         }
     }

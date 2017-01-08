@@ -25,6 +25,10 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"/>
 
+        <activity android:name=".storeddatas.StoredDataActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
     </application>
 
 </manifest>

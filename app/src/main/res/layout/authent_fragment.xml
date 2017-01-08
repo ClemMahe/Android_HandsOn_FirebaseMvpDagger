@@ -14,15 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <Button android:id="@+id/authent_friends"
-        android:layout_marginTop="10dp"
-        style="@style/Base.Widget.AppCompat.Button.Colored"
-        android:text="@string/authent_button_friends"
-        android:layout_width="match_parent"
-        android:enabled="false"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/authent_googlesigninbutton"/>
-
     <Button android:id="@+id/authent_storedata"
         android:layout_marginTop="10dp"
         style="@style/Base.Widget.AppCompat.Button.Colored"
@@ -30,7 +21,16 @@
         android:layout_width="match_parent"
         android:enabled="false"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/authent_friends"/>
+        android:layout_below="@+id/authent_googlesigninbutton"/>
+
+    <Button android:id="@+id/authent_friends"
+        android:layout_marginTop="10dp"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
+        android:text="@string/authent_button_friends"
+        android:layout_width="match_parent"
+        android:enabled="false"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/authent_storedata"/>
 
 
 </RelativeLayout>

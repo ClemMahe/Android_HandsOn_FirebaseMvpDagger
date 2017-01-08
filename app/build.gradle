@@ -87,6 +87,7 @@ dependencies {
     compile "com.google.firebase:firebase-auth:$rootProject.firebaseApiVersion"
     compile "com.google.android.gms:play-services-auth:$rootProject.firebaseApiVersion"
     compile "com.google.firebase:firebase-invites:$rootProject.firebaseApiVersion"
+    compile "com.google.firebase:firebase-database:$rootProject.firebaseApiVersion"
     //Firebase crash
     compile "com.google.firebase:firebase-crash:$rootProject.firebaseApiVersion"
     provided 'org.glassfish:javax.annotation:10.0-b28'
@@ -94,6 +95,7 @@ dependencies {
     //Butterknife
     compile "com.jakewharton:butterknife:$rootProject.butterknifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterknifeVersion"
+
 
 
 }

@@ -8,7 +8,7 @@ import com.google.firebase.auth.FirebaseUser;
 import javax.inject.Inject;
 
 /**
- * FriendsPresenter
+ * StoredDataPresenter
  * Created by clem on 04/12/2016.
  */
 

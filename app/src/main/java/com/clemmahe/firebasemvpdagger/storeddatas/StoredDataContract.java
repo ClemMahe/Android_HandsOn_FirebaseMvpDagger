@@ -1,4 +1,4 @@
-package com.clemmahe.firebasemvpdagger.friends;
+package com.clemmahe.firebasemvpdagger.storeddatas;
 
 import com.clemmahe.firebasemvpdagger.BasePresenter;
 import com.clemmahe.firebasemvpdagger.BaseView;
@@ -8,16 +8,16 @@ import com.clemmahe.firebasemvpdagger.BaseView;
  * Created by clem on 04/12/2016.
  */
 
-public interface FriendsContract {
+public interface StoredDataContract {
 
     /**
      * Authent View
      */
     interface View extends BaseView<Presenter> {
 
-        void inviteCompleted();
+        void positionAdded(final long latitude, final long longitude);
+        void positionNotAdded();
 
-        void inviteCancelled();
     }
 
     /**
@@ -25,7 +25,7 @@ public interface FriendsContract {
      */
     interface Presenter extends BasePresenter {
 
-        void startInvite();
+        void addPosition(long time, long latitude, long longitude);
 
     }
 }

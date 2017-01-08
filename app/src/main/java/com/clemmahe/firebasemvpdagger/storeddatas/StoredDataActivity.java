@@ -1,4 +1,4 @@
-package com.clemmahe.firebasemvpdagger.authent;
+package com.clemmahe.firebasemvpdagger.storeddatas;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -13,10 +13,10 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class AuthentActivity extends BaseActivity{
+public class StoredDataActivity extends BaseActivity{
     
     @Inject
-    AuthentPresenter mAuthentPresenter;
+    StoredDataPresenter mAuthentPresenter;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -28,27 +28,26 @@ public class AuthentActivity extends BaseActivity{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.authent_activity);
+        setContentView(R.layout.storedatas_activity);
         ButterKnife.bind(this);
 
         // Set up the toolbar.
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        AuthentFragment authentFragment = (AuthentFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.authentContentFrame);
-        if (authentFragment == null) {
-            authentFragment = AuthentFragment.newInstance();
+        StoredDataFragment storedDataFragment = (StoredDataFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.storedDataContentFrame);
+        if (storedDataFragment == null) {
+            storedDataFragment = StoredDataFragment.newInstance();
             ActivityUtils.addFragmentToActivity(getSupportFragmentManager(),
-                    authentFragment, R.id.authentContentFrame);
+                    storedDataFragment, R.id.storedDataContentFrame);
         }
 
-        DaggerAuthentComponent.builder()
-                .authentPresenterModule(new AuthentPresenterModule(authentFragment))
+        DaggerStoredDataComponent.builder()
+                .storedDataPresenterModule(new StoredDataPresenterModule(storedDataFragment))
                 .firebaseComponent(((BaseActivity)this).getFirebaseComponent())
                 .build()
                 .inject(this);
-
     }
 
     @Override

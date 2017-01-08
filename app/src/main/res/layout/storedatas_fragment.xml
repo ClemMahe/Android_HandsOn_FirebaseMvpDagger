@@ -6,7 +6,24 @@
     android:layout_height="match_parent"
     android:layout_marginTop="?attr/actionBarSize"
     tools:context="com.clemmahe.firebasemvpdagger.authent.AuthentActivity"
-    tools:showIn="@layout/authent_activity">
+    tools:showIn="@layout/authent_activity"
+    android:padding="10dp">
+
+    <Button android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/storeddata_storefakeposition"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
+        android:text="@string/storeddata_button_storefakeposition"/>
+
+    <TextView android:id="@+id/storeddata_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/storeddata_storefakeposition"/>
+
+    <TextView android:id="@+id/storeddata_received"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/storeddata_textview"
+        android:layout_height="wrap_content"/>
 
 
 </RelativeLayout>

@@ -6,7 +6,7 @@ import com.google.firebase.auth.FirebaseUser;
 import javax.inject.Inject;
 
 /**
- * FriendsPresenter
+ * StoredDataPresenter
  * Created by clem on 04/12/2016.
  */
 
@@ -47,6 +47,7 @@ public final class FriendsPresenter implements FriendsContract.Presenter, IFireb
 
     @Override
     public void startInvite() {
+        //The link will need to be installed for the other user if he does not have the user
     }
 
     @Override
