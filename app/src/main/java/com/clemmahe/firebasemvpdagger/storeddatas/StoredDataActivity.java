@@ -5,7 +5,6 @@ import android.support.v7.widget.Toolbar;
 
 import com.clemmahe.firebasemvpdagger.BaseActivity;
 import com.clemmahe.firebasemvpdagger.R;
-import com.clemmahe.firebasemvpdagger.firebase.FirebaseComponent;
 import com.clemmahe.firebasemvpdagger.utils.ActivityUtils;
 
 import javax.inject.Inject;
@@ -20,9 +19,6 @@ public class StoredDataActivity extends BaseActivity{
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-
-    @Inject
-    FirebaseComponent mCompo;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
