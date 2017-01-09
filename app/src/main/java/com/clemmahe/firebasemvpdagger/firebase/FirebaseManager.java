@@ -5,7 +5,6 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.clemmahe.firebasemvpdagger.R;
-import com.clemmahe.firebasemvpdagger.friends.IFirebaseFriendsListener;
 import com.google.android.gms.appinvite.AppInvite;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -48,7 +47,6 @@ public class FirebaseManager implements GoogleApiClient.OnConnectionFailedListen
     private boolean startAsLoggedIn;
 
     private IFirebaseAuthenticationListener authListener;
-    private IFirebaseFriendsListener friendsListener;
 
     @Inject
     FirebaseManager(Context ctx) {
@@ -76,9 +74,7 @@ public class FirebaseManager implements GoogleApiClient.OnConnectionFailedListen
         };
     }
 
-    public void setFriendsListener(final IFirebaseFriendsListener listener){
-        this.friendsListener = listener;
-    }
+
 
     /**
      * Init api client sign in options

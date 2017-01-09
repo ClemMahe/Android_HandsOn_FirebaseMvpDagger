@@ -9,21 +9,37 @@
     tools:showIn="@layout/authent_activity"
     android:padding="10dp">
 
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/storeddata_latitude_inputlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/storeddata_edittext_latitude"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/storeddata_edittext_latitude_hint" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/storeddata_longitude_inputlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/storeddata_latitude_inputlayout">
+        <EditText
+            android:id="@+id/storeddata_edittext_longitude"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/storeddata_edittext_longitude_hint" />
+    </android.support.design.widget.TextInputLayout>
+
+
     <Button android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/storeddata_storefakeposition"
         style="@style/Base.Widget.AppCompat.Button.Colored"
-        android:text="@string/storeddata_button_storefakeposition"/>
-
-    <TextView android:id="@+id/storeddata_textview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/storeddata_storefakeposition"/>
-
-    <TextView android:id="@+id/storeddata_received"
-        android:layout_width="match_parent"
-        android:layout_below="@+id/storeddata_textview"
-        android:layout_height="wrap_content"/>
+        android:text="@string/storeddata_button_storefakeposition"
+        android:layout_below="@+id/storeddata_longitude_inputlayout"/>
 
 
 </RelativeLayout>

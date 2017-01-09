@@ -2,14 +2,18 @@
     <string name="app_name">Firebase MVP</string>
 
     <string name="authent_button_friends">Share position</string>
-    <string name="authent_button_storedata">Store fake position</string>
+    <string name="authent_button_storedata">Load/Save position</string>
     <string name="authen_state_connected">Connected</string>
 
     <string name="invite_button">Invite friends</string>
     <string name="invite_completed">Invitations effectuées</string>
     <string name="invite_cancelled">Invitations annulées</string>
 
-    <string name="storeddata_button_storefakeposition">Store fake position</string>
-    <string name="storeddata_positionadded">Position added</string>
-    <string name="storeddata_positionnotadded">Position not added</string>
+    <string name="storeddata_button_storefakeposition">Store position</string>
+    <string name="storeddata_positionadded">Position stored</string>
+    <string name="storeddata_positionnotadded">Position not stored</string>
+    <string name="storeddata_edittext_latitude_hint">Latitude</string>
+    <string name="storeddata_edittext_longitude_hint">Longitude</string>
+    <string name="error_values_lat_long">Please set correct values to latitude longitude</string>
+    <string name="storeddata_loadingdata">Loading position...</string>
 </resources>

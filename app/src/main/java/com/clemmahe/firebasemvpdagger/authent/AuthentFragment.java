@@ -15,7 +15,6 @@ import android.widget.Button;
 import com.clemmahe.firebasemvpdagger.BaseFragment;
 import com.clemmahe.firebasemvpdagger.R;
 import com.clemmahe.firebasemvpdagger.firebase.FirebaseManager;
-import com.clemmahe.firebasemvpdagger.friends.FriendsActivity;
 import com.clemmahe.firebasemvpdagger.storeddatas.StoredDataActivity;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -136,11 +135,6 @@ public class AuthentFragment extends BaseFragment implements AuthentContract.Vie
         switch (view.getId()) {
             case R.id.authent_googlesigninbutton:
                 mPresenter.startSignIn();
-                break;
-            case R.id.authent_friends:
-                Intent friendsIt = new Intent(getContext(),
-                        FriendsActivity.class);
-                startActivity(friendsIt);
                 break;
             case R.id.authent_storedata:
                 Intent storedDataIt = new Intent(getContext(),

@@ -16,16 +16,13 @@ public interface StoredDataContract {
     interface View extends BaseView<Presenter> {
 
         void positionAdded(final long latitude, final long longitude);
-        void positionNotAdded();
-
+        void positionLoaded(final long latitude, final long longitude);
     }
 
     /**
      * Authent Presenter
      */
     interface Presenter extends BasePresenter {
-
         void addPosition(long time, long latitude, long longitude);
-
     }
 }

@@ -5,12 +5,13 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.UiThread;
 import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.EditText;
 
 import com.clemmahe.firebasemvpdagger.BaseFragment;
 import com.clemmahe.firebasemvpdagger.R;
@@ -30,12 +31,12 @@ import static dagger.internal.Preconditions.checkNotNull;
 public class StoredDataFragment extends BaseFragment implements StoredDataContract.View {
 
 
-    @BindView(R.id.storeddata_textview)
-    TextView storeddataTextview;
     @BindView(R.id.storeddata_storefakeposition)
     Button storeddataStorefakeposition;
-    @BindView(R.id.storeddata_received)
-    TextView storeddataReceived;
+    @BindView(R.id.storeddata_edittext_latitude)
+    EditText storeddataEdittextLatitude;
+    @BindView(R.id.storeddata_edittext_longitude)
+    EditText storeddataEdittextLongitude;
 
     private StoredDataContract.Presenter mPresenter;
     private Handler uiThread;
@@ -56,6 +57,10 @@ public class StoredDataFragment extends BaseFragment implements StoredDataContra
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Snackbar.make(getView(),
+                R.string.storeddata_loadingdata
+                , Snackbar.LENGTH_LONG).show();
     }
 
     @Override
@@ -82,32 +87,40 @@ public class StoredDataFragment extends BaseFragment implements StoredDataContra
 
     @OnClick(R.id.storeddata_storefakeposition)
     public void onClick() {
-        mPresenter.addPosition(new Date().getTime(), 3, -47);
+        long latitude;
+        long longitude;
+
+        try{
+            latitude = Long.parseLong(storeddataEdittextLatitude.getText().toString());
+            try{
+                longitude = Long.parseLong(storeddataEdittextLongitude.getText().toString());
+                mPresenter.addPosition(new Date().getTime(), latitude, longitude);
+
+
+            }catch (Exception e){
+                storeddataEdittextLongitude.
+                        setError(getResources().getString(R.string.error_values_lat_long));
+            }
+        }catch (Exception e){
+            storeddataEdittextLatitude.
+                    setError(getResources().getString(R.string.error_values_lat_long));
+        }
+
     }
 
-
+    @UiThread
     @Override
     public void positionAdded(final long latitude, final long longitude) {
-        uiThread.post(new Runnable() {
-            @Override
-            public void run() {
-                storeddataTextview.setText("PositionSaved Lat:"+latitude+" Long:"+longitude);
-                Snackbar.make(getView(),
-                        R.string.storeddata_positionadded
-                        , Snackbar.LENGTH_LONG).show();
-            }
-        });
+        Snackbar.make(getView(),
+                R.string.storeddata_positionadded
+                , Snackbar.LENGTH_LONG).show();
     }
 
+
+    @UiThread
     @Override
-    public void positionNotAdded() {
-        uiThread.post(new Runnable() {
-            @Override
-            public void run() {
-                Snackbar.make(getView(),
-                        R.string.storeddata_positionnotadded
-                        , Snackbar.LENGTH_LONG).show();
-            }
-        });
+    public void positionLoaded(final long latitude, final long longitude) {
+        storeddataEdittextLatitude.setText(String.valueOf(latitude));
+        storeddataEdittextLongitude.setText(String.valueOf(longitude));
     }
 }
